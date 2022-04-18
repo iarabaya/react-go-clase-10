@@ -1,23 +1,16 @@
-import logo from './logo.svg';
 import './App.css';
+import Boton from './components/Boton';
+import Lista from './components/Lista';
+import Video from './components/Video';
+import Sonido from './components/Sonido';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Lista items={["uno","dos","tres"]}/>
+      <Boton text={"toca aqui"}/>
+      <Video src=""/>
+      <Sonido src="./assets/farm-cow.mp3"/>
     </div>
   );
 }
