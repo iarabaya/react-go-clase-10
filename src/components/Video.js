@@ -1,11 +1,56 @@
 import React from 'react';
 
-class Video extends React.Component {
+export default class VideoReact extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.video = null; // the Video component
+
+    this.state = {
+      isActive: false
+    };
+  }
+
+  handleClick() {
+    this.setState({
+      isActive: !this.state.isActive
+      
+    });
+    if (this.state.isActive) {
+      this.pause();
+    } else {
+      this.play();
+    }
+  }
+
+  // play the video
+  play() {
+    this.video.play();
+  }
+
+  // pause the video
+  pause() {
+    this.video.pause();
+  }
+
   render() {
+
     return (
-      <source src={this.props.src} type="video/mp4"/>
-    )
+      <div>
+        <video
+          ref={c => {
+            this.video = c;
+          }}
+          className={this.state.isActive ? 'active' : 'deactive'}
+          src="https://www.w3schools.com/TAgs/movie.ogg"
+        />
+        <button
+          onClick={this.handleClick.bind(this)}
+          className={this.state.isActive ? 'active' : ''}
+        >
+           {this.props.children}
+        </button>
+      </div>
+    );
   }
 }
-
-export default Video;
